@@ -53,7 +53,7 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read"})
+     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read", "user:write"})
      * @Assert\NotBlank()
      * @Assert\Length(
      *     min=2,
@@ -72,7 +72,7 @@ class CheeseListing
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read"})
+     * @Groups({"cheese_listing:read", "cheese_listing:write", "user:read", "user:write"})
      * @Assert\NotBlank()
      * @Assert\GreaterThan(0)
      */
@@ -92,7 +92,7 @@ class CheeseListing
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cheeseListings")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"cheese_listing:read", "cheese_listing:write"})
-     * @Assert\Valid 
+     * @Assert\Valid
      */
     private $owner;
 
@@ -133,7 +133,7 @@ class CheeseListing
      * The description of the cheese as raw text.
      *
      * @SerializedName("description")
-     * @Groups({"cheese_listing:write"})
+     * @Groups({"cheese_listing:write", "user:write"})
      */
     public function setTextDescription(string $description)
     {
